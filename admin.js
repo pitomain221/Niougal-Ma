@@ -1,0 +1,14 @@
+let orders=JSON.parse(localStorage.getItem("niougalOrders")||"[]");let products=JSON.parse(localStorage.getItem("niougalProducts")||"[]");
+const statuses={waiting:"En attente",shopping:"Achat en cours",preparing:"Préparation",delivery:"En livraison",delivered:"Livrée"};
+const f=n=>new Intl.NumberFormat("fr-FR").format(n)+" FCFA";
+function toast(m){const t=document.getElementById("toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2200)}
+function save(){localStorage.setItem("niougalOrders",JSON.stringify(orders));localStorage.setItem("niougalProducts",JSON.stringify(products));render()}
+function render(){const total=orders.reduce((s,o)=>s+(o.total||0),0);const delivered=orders.filter(o=>o.status==="delivered").length;document.getElementById("stats").innerHTML=`<div class="stat"><b>${orders.length}</b><span>Commandes</span></div><div class="stat"><b>${orders.filter(o=>o.status==="waiting").length}</b><span>En attente</span></div><div class="stat"><b>${delivered}</b><span>Livrées</span></div><div class="stat"><b>${f(total)}</b><span>Total estimatif</span></div>`;
+document.getElementById("paymentTotal").textContent=f(total);document.getElementById("paymentCount").textContent=orders.length;
+document.getElementById("adminOrders").innerHTML=orders.length?orders.map((o,i)=>`<div class="admin-order"><div class="admin-order-top"><strong>${o.id}</strong><strong>${f(o.total||0)}</strong></div><small>${o.date||""}</small><br><select class="status-select" onchange="changeStatus(${i},this.value)">${Object.entries(statuses).map(([k,v])=>`<option value="${k}" ${o.status===k?"selected":""}>${v}</option>`).join("")}</select></div>`).join(""):"<p>Aucune commande enregistrée.</p>";
+document.getElementById("adminProducts").innerHTML=products.length?products.map((p,i)=>`<div class="admin-product"><span>${p.icon||"🥬"} <strong>${p.name}</strong> — ${f(p.price)} / ${p.unit}</span><button class="delete-btn" onclick="deleteProduct(${i})">Supprimer</button></div>`).join(""):"<p>Aucun produit personnalisé ajouté.</p>";}
+function changeStatus(i,s){orders[i].status=s;save();toast("Statut de commande mis à jour");}
+function deleteProduct(i){products.splice(i,1);save();toast("Produit supprimé");}
+document.getElementById("productForm").onsubmit=e=>{e.preventDefault();products.push({icon:pIcon.value||"🥬",name:pName.value.trim(),price:Number(pPrice.value),unit:pUnit.value.trim()});e.target.reset();save();toast("Produit ajouté au catalogue");}
+document.getElementById("demoOrder").onclick=()=>{if(!orders.length){orders.push({id:"CMD-"+Date.now().toString().slice(-6),date:new Date().toLocaleDateString("fr-FR"),status:"waiting",items:[],total:3500,address:"Adresse de démonstration"});save();toast("Commande de démonstration ajoutée")}else toast("Des commandes existent déjà");};
+render();
