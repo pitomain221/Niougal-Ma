@@ -1,0 +1,14 @@
+let cart=JSON.parse(localStorage.getItem("niougalCart")||"[]");
+let delivery=JSON.parse(localStorage.getItem("niougalDelivery")||"null");
+let method="wave";const fee=500;const format=n=>new Intl.NumberFormat("fr-FR").format(n)+" FCFA";
+const toast=m=>{const t=document.getElementById("toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2500);};
+function render(){if(!cart.length){document.getElementById("orderPreview").innerHTML='<p>Aucun produit dans le panier.</p>'}else{document.getElementById("orderPreview").innerHTML=cart.map(i=>'<div class="preview-item"><span>'+ (i.icon||"📝")+' '+i.name+' × '+(i.qty||1)+'</span><strong>'+ (i.price?format(i.price*(i.qty||1)):"À confirmer")+'</strong></div>').join("")}
+const subtotal=cart.reduce((s,i)=>s+(i.price||0)*(i.qty||1),0);document.getElementById("subtotal").textContent=format(subtotal);document.getElementById("total").textContent=format(subtotal+fee);
+const d=document.getElementById("deliveryPreview");d.innerHTML=delivery?'<strong>📍 Livraison</strong><span>'+delivery.name+' · '+delivery.phone+'<br>'+delivery.district+', '+delivery.city+'<br>'+delivery.address+'</span>':'<strong>📍 Adresse</strong><span>Adresse non renseignée</span>';
+}
+document.querySelectorAll(".payment-method").forEach(btn=>btn.onclick=()=>{document.querySelectorAll(".payment-method").forEach(b=>b.classList.remove("active"));btn.classList.add("active");method=btn.dataset.method;});
+document.getElementById("payBtn").onclick=()=>{const phone=document.getElementById("paymentPhone").value.trim();if(!cart.length){toast("Votre panier est vide.");return;}if(!delivery){toast("Veuillez renseigner votre adresse de livraison.");setTimeout(()=>location.href="livraison.html",700);return;}if(!phone){toast("Veuillez saisir votre numéro de paiement.");return;}
+const subtotal=cart.reduce((s,i)=>s+(i.price||0)*(i.qty||1),0);const order={id:"CMD-"+Date.now().toString().slice(-6),date:new Date().toLocaleDateString("fr-FR"),status:"waiting",items:cart,total:subtotal+fee,address:delivery.district+", "+delivery.city+" — "+delivery.address,paymentMethod:method,paymentPhone:phone,paymentStatus:"pending"};
+document.getElementById("paymentModal").hidden=false;setTimeout(()=>{let orders=JSON.parse(localStorage.getItem("niougalOrders")||"[]");orders.push(order);localStorage.setItem("niougalOrders",JSON.stringify(orders));localStorage.removeItem("niougalCart");document.getElementById("modalTitle").textContent="Commande enregistrée !";document.getElementById("modalText").textContent="Votre commande "+order.id+" est maintenant en attente de confirmation.";setTimeout(()=>location.href="suivi.html",1300)},1500);
+};
+render();
