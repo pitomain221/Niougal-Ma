@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2f7d32">
+<title>Inscription | Niougal Ma</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="auth.css">
+</head>
+<body>
+<main class="auth-page">
+<a href="index.html" class="auth-logo">🥬 <span>Niougal Ma</span></a>
+<section class="auth-card">
+<div class="auth-illustration">🥬</div>
+<h1>Créer un compte</h1>
+<p>Inscrivez-vous pour commander facilement vos produits.</p>
+<form id="signupForm">
+<label for="signupName">Nom complet</label>
+<input id="signupName" type="text" placeholder="Votre nom complet" required>
+<label for="signupPhone">Numéro de téléphone</label>
+<input id="signupPhone" type="tel" placeholder="77 000 00 00" required>
+<label for="signupPassword">Mot de passe</label>
+<div class="password-wrap"><input id="signupPassword" type="password" placeholder="Minimum 4 caractères" minlength="4" required><button type="button" class="show-password">👁️</button></div>
+<label for="signupConfirm">Confirmer le mot de passe</label>
+<div class="password-wrap"><input id="signupConfirm" type="password" placeholder="Répétez votre mot de passe" required><button type="button" class="show-password">👁️</button></div>
+<button class="auth-btn" type="submit">Créer mon compte →</button>
+</form>
+<p class="auth-switch">Vous avez déjà un compte ? <a href="connexion.html">Se connecter</a></p>
+<a class="back-home" href="index.html">← Retour à l'accueil</a>
+</section>
+</main>
+<div class="toast" id="toast"></div>
+<script src="auth.js"></script>
+</body>
+</html>
