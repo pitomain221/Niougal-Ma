@@ -1,0 +1,10 @@
+let cart=JSON.parse(localStorage.getItem("niougalCart")||"[]");
+const fee=500;const format=n=>new Intl.NumberFormat("fr-FR").format(n)+" FCFA";
+function render(){const count=cart.reduce((s,i)=>s+i.qty,0);document.getElementById("cartCount").textContent=count;const items=document.getElementById("cartItems");const empty=document.getElementById("emptyState");const layout=document.querySelector(".cart-layout");if(!cart.length){layout.hidden=true;empty.hidden=false;return}layout.hidden=false;empty.hidden=true;items.innerHTML=cart.map((i,n)=>`<article class="full-cart-item"><div class="item-icon">${i.icon||"📝"}</div><div class="item-info"><h3>${i.name}</h3><small>${i.price?format(i.price)+" / "+i.unit:"Prix à confirmer"}</small>${i.description?`<small><br>📝 ${i.description}</small>`:""}<div class="item-controls"><button onclick="changeQty(${n},-1)">−</button><strong>${i.qty}</strong><button onclick="changeQty(${n},1)">+</button></div></div><div class="item-price"><strong>${i.price?format(i.price*i.qty):"À confirmer"}</strong><button class="remove" onclick="removeItem(${n})">Supprimer</button></div></article>`).join("");const subtotal=cart.reduce((s,i)=>s+(i.price||0)*i.qty,0);document.getElementById("subtotal").textContent=format(subtotal);document.getElementById("total").textContent=format(subtotal+fee);}
+function save(){localStorage.setItem("niougalCart",JSON.stringify(cart));render();}
+function changeQty(n,d){cart[n].qty+=d;if(cart[n].qty<=0)cart.splice(n,1);save();}
+function removeItem(n){cart.splice(n,1);save();showToast("Produit supprimé du panier");}
+function showToast(m){const t=document.getElementById("toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2200);}
+document.getElementById("clearBtn").onclick=()=>{cart=[];save();showToast("Panier vidé");};
+document.getElementById("checkoutBtn").onclick=()=>{if(!cart.length)return;showToast("Prochaine étape : adresse de livraison.");setTimeout(()=>location.href="livraison.html",500);};
+render();
