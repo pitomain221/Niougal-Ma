@@ -1,0 +1,13 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><meta name="theme-color" content="#2f7d32"><title>Administration | Niougal Ma</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="admin.css"></head><body>
+<header class="header"><a href="index.html" class="logo">🥬 <span>Niougal Ma</span></a><nav><a href="index.html">Voir le site</a><a class="btn btn-small" href="admin.html">👨‍💼 Administration</a></nav></header>
+<main class="admin-page">
+<section class="admin-hero"><span class="badge">👨‍💼 ESPACE ADMINISTRATEUR</span><h1>Tableau de bord</h1><p>Gérez les commandes et le catalogue de Niougal Ma.</p></section>
+<div class="stats" id="stats"></div>
+<section class="admin-grid">
+<div class="admin-card orders-card"><div class="section-title"><div><h2>📦 Commandes</h2><p>Gérez le statut des commandes.</p></div><button id="demoOrder">+ Démo</button></div><div id="adminOrders"></div></div>
+<div class="admin-card catalog-card"><div class="section-title"><div><h2>🥬 Catalogue</h2><p>Ajoutez ou supprimez des produits.</p></div></div>
+<form id="productForm" class="product-form"><input id="pIcon" placeholder="🍅"><input id="pName" placeholder="Nom du produit" required><input id="pPrice" type="number" min="0" placeholder="Prix FCFA" required><input id="pUnit" placeholder="Unité (kg, botte...)" required><button>Ajouter</button></form>
+<div id="adminProducts" class="admin-products"></div></div>
+</section>
+<section class="admin-card payments"><h2>💰 Paiements</h2><div class="payment-row"><span>Total estimatif des commandes</span><strong id="paymentTotal">0 FCFA</strong></div><div class="payment-row"><span>Commandes enregistrées</span><strong id="paymentCount">0</strong></div><p>Les paiements réels devront être connectés à Wave/Orange Money via une intégration sécurisée côté serveur.</p></section>
+</main><div class="toast" id="toast"></div><script src="admin.js"></script></body></html>
