@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2f7d32">
+<title>Adresse de livraison | Niougal Ma</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="livraison.css">
+</head>
+<body>
+<header class="header">
+<a href="index.html" class="logo">🥬 <span>Niougal Ma</span></a>
+<nav>
+<a href="index.html">Accueil</a>
+<a href="catalogue.html">Catalogue</a>
+<a class="btn btn-small" href="panier.html">🛒 Panier <span id="cartCount">0</span></a>
+</nav>
+</header>
+
+<main class="delivery-page">
+<section class="delivery-hero">
+<span class="badge">📍 LIVRAISON</span>
+<h1>Où devons-nous vous livrer ?</h1>
+<p>Indiquez votre adresse afin que nous puissions préparer la livraison de votre commande.</p>
+</section>
+
+<div class="delivery-layout">
+<section class="delivery-card">
+<div class="step-label"><span>1</span> Informations de livraison</div>
+
+<form id="deliveryForm">
+<div class="field-row">
+<div>
+<label for="fullname">Nom complet *</label>
+<input id="fullname" type="text" placeholder="Votre nom" required>
+</div>
+<div>
+<label for="phone">Téléphone *</label>
+<input id="phone" type="tel" placeholder="77 000 00 00" required>
+</div>
+</div>
+
+<div class="field-row">
+<div>
+<label for="city">Ville *</label>
+<input id="city" type="text" placeholder="Exemple : Thiès" required>
+</div>
+<div>
+<label for="district">Quartier *</label>
+<input id="district" type="text" placeholder="Exemple : Grand Standing" required>
+</div>
+</div>
+
+<label for="address">Adresse / repère *</label>
+<textarea id="address" placeholder="Exemple : Près de la mosquée, maison jaune..." required></textarea>
+
+<div class="location-box">
+<div>
+<h3>📍 Ma position actuelle</h3>
+<p>Utilisez votre position GPS pour faciliter la livraison.</p>
+</div>
+<button type="button" id="locationBtn">Utiliser ma position</button>
+</div>
+<p class="location-status" id="locationStatus"></p>
+
+<label for="instructions">Instructions pour le livreur (facultatif)</label>
+<textarea id="instructions" class="small-textarea" placeholder="Exemple : Appelez-moi avant d'arriver..."></textarea>
+
+<div class="delivery-actions">
+<a href="panier.html" class="back-link">← Retour au panier</a>
+<button type="submit" class="continue-btn">Continuer vers le paiement →</button>
+</div>
+</form>
+</section>
+
+<aside class="order-summary">
+<h2>📦 Votre commande</h2>
+<div id="orderPreview"></div>
+<div class="summary-line"><span>Sous-total estimatif</span><strong id="subtotal">0 FCFA</strong></div>
+<div class="summary-line"><span>Frais de service</span><strong>500 FCFA</strong></div>
+<div class="summary-total"><span>Total estimatif</span><strong id="total">0 FCFA</strong></div>
+<p>Le coût de la livraison pourra être confirmé selon votre zone.</p>
+</aside>
+</div>
+</main>
+
+<div class="toast" id="toast"></div>
+<script src="livraison.js"></script>
+</body>
+</html>
