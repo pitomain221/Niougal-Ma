@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#2f7d32">
+<title>Paiement | Niougal Ma</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="paiement.css">
+</head>
+<body>
+<header class="header">
+<a href="index.html" class="logo">🥬 <span>Niougal Ma</span></a>
+<nav>
+<a href="index.html">Accueil</a>
+<a href="catalogue.html">Catalogue</a>
+<a class="btn btn-small" href="suivi.html">📦 Mes commandes</a>
+</nav>
+</header>
+
+<main class="payment-page">
+<section class="payment-hero">
+<span class="badge">📱💰 PAIEMENT</span>
+<h1>Choisissez votre moyen de paiement</h1>
+<p>Finalisez votre commande en toute simplicité avec votre mobile money.</p>
+</section>
+
+<div class="payment-layout">
+<section class="payment-card">
+<div class="step-label"><span>2</span> Moyen de paiement</div>
+
+<div class="payment-methods">
+<button class="payment-method active" data-method="wave">
+<span class="method-icon wave">W</span>
+<span class="method-info"><strong>Wave</strong><small>Paiement mobile</small></span>
+<span class="radio"></span>
+</button>
+
+<button class="payment-method" data-method="orange">
+<span class="method-icon orange">OM</span>
+<span class="method-info"><strong>Orange Money</strong><small>Paiement mobile</small></span>
+<span class="radio"></span>
+</button>
+</div>
+
+<div class="payment-form">
+<label for="paymentPhone">Numéro de téléphone utilisé pour le paiement *</label>
+<input id="paymentPhone" type="tel" placeholder="77 000 00 00">
+
+<div class="info-box">
+<span>🔒</span>
+<p>Pour cette version de démonstration, aucun paiement réel n'est effectué. L'intégration officielle de Wave et Orange Money nécessitera des API sécurisées.</p>
+</div>
+
+<button id="payBtn" class="pay-btn">Confirmer la commande</button>
+<a href="livraison.html" class="back-link">← Modifier mon adresse de livraison</a>
+</div>
+</section>
+
+<aside class="payment-summary">
+<h2>📦 Récapitulatif</h2>
+<div id="deliveryPreview" class="delivery-preview"></div>
+<div id="orderPreview" class="order-preview"></div>
+<div class="summary-line"><span>Sous-total estimatif</span><strong id="subtotal">0 FCFA</strong></div>
+<div class="summary-line"><span>Frais de service</span><strong id="serviceFee">500 FCFA</strong></div>
+<div class="summary-total"><span>Total estimatif</span><strong id="total">0 FCFA</strong></div>
+<p class="summary-note">Le montant final peut varier selon les prix du marché et les frais de livraison.</p>
+</aside>
+</div>
+</main>
+
+<div class="payment-modal" id="paymentModal" hidden>
+<div class="modal-box">
+<div class="loader"></div>
+<h2 id="modalTitle">Traitement de la commande...</h2>
+<p id="modalText">Veuillez patienter quelques instants.</p>
+</div>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="paiement.js"></script>
+</body>
+</html>
