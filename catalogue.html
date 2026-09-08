@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#2f7d32">
+<title>Catalogue | Niougal Ma</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="catalogue.css">
+</head>
+<body>
+<header class="header">
+<a href="index.html" class="logo">🥬 <span>Niougal Ma</span></a>
+<nav><a href="index.html">Accueil</a><a href="#catalogue">Catalogue</a><a class="btn btn-small" href="#panier">🛒 Panier <span id="cartCount">0</span></a></nav>
+</header>
+<main class="catalogue-page" id="catalogue">
+<section class="catalogue-hero">
+<span class="badge">🥬 PRODUITS FRAIS</span>
+<h1>Choisissez vos légumes</h1>
+<p>Ajoutez les produits souhaités à votre panier. Les prix sont indicatifs et peuvent varier selon le marché.</p>
+</section>
+<div class="catalogue-layout">
+<section>
+<div class="toolbar">
+<div class="search-box">🔎 <input id="searchInput" type="search" placeholder="Rechercher un légume..."></div>
+<div class="categories" id="categories">
+<button class="active" data-category="Tous">Tous</button>
+<button data-category="Légumes">🥬 Légumes</button>
+<button data-category="Épices">🌶️ Épices</button>
+</div>
+</div>
+<div class="product-grid" id="productGrid"></div>
+</section>
+<aside class="cart-panel" id="panier">
+<div class="cart-head"><h2>🛒 Mon panier</h2><span id="cartCountLarge">0 article</span></div>
+<div id="cartItems" class="cart-items"><p class="empty-cart">Votre panier est vide.<br>Ajoutez des légumes pour commencer.</p></div>
+<div class="cart-total"><span>Total estimatif</span><strong id="cartTotal">0 FCFA</strong></div>
+<button class="checkout-btn" id="checkoutBtn">Continuer la commande →</button>
+</aside>
+</div>
+<section class="custom-order">
+<div><span class="eyebrow">BESOIN D'AUTRE CHOSE ?</span><h2>Commande personnalisée</h2><p>Vous ne trouvez pas un produit ? Décrivez simplement ce que vous souhaitez acheter au marché.</p></div>
+<div class="custom-form"><textarea id="customRequest" placeholder="Exemple : Je veux 3 bottes de persil et 500 FCFA de piment..."></textarea><button id="addCustom">Ajouter ma demande</button></div>
+</section>
+</main>
+<div class="toast" id="toast"></div>
+<script src="catalogue.js"></script>
+</body>
+</html>
