@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#2f7d32">
+<title>Mon panier | Niougal Ma</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="panier.css">
+</head>
+<body>
+<header class="header">
+<a href="index.html" class="logo">🥬 <span>Niougal Ma</span></a>
+<nav><a href="index.html">Accueil</a><a href="catalogue.html">Catalogue</a><a class="btn btn-small" href="panier.html">🛒 Panier <span id="cartCount">0</span></a></nav>
+</header>
+<main class="cart-page">
+<section class="cart-title"><span class="badge">🛒 VOTRE COMMANDE</span><h1>Mon panier</h1><p>Vérifiez vos produits et ajustez les quantités avant de continuer.</p></section>
+<div class="cart-layout">
+<section class="cart-box">
+<div id="cartItems" class="full-cart-items"></div>
+<a class="continue-shopping" href="catalogue.html">← Continuer mes achats</a>
+</section>
+<aside class="summary">
+<h2>Résumé de la commande</h2>
+<div class="summary-row"><span>Sous-total estimatif</span><strong id="subtotal">0 FCFA</strong></div>
+<div class="summary-row"><span>Frais de service</span><strong id="serviceFee">500 FCFA</strong></div>
+<div class="summary-row delivery-note"><span>Livraison</span><strong>À confirmer</strong></div>
+<div class="summary-total"><span>Total estimatif</span><strong id="total">0 FCFA</strong></div>
+<p class="price-note">Les prix des produits peuvent varier selon le marché. Le montant final pourra être confirmé avant la livraison.</p>
+<button id="checkoutBtn" class="checkout-main">Continuer vers la livraison →</button>
+<button id="clearBtn" class="clear-cart">Vider le panier</button>
+</aside>
+</div>
+<section class="empty-state" id="emptyState" hidden>
+<div>🛒</div><h2>Votre panier est vide</h2><p>Découvrez notre catalogue et ajoutez vos légumes préférés.</p><a class="btn btn-primary" href="catalogue.html">Voir le catalogue</a>
+</section>
+</main>
+<div class="toast" id="toast"></div>
+<script src="panier.js"></script>
+</body>
+</html>
