@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2f7d32">
+<title>Suivi des commandes | Niougal Ma</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="suivi.css">
+</head>
+<body>
+<header class="header">
+<a href="index.html" class="logo">🥬 <span>Niougal Ma</span></a>
+<nav>
+<a href="index.html">Accueil</a>
+<a href="catalogue.html">Catalogue</a>
+<a class="btn btn-small" href="suivi.html">📦 Mes commandes</a>
+</nav>
+</header>
+
+<main class="tracking-page">
+<section class="tracking-hero">
+<span class="badge">📦 SUIVI DES COMMANDES</span>
+<h1>Suivez votre commande</h1>
+<p>Consultez l'avancement de vos achats, de la réception jusqu'à la livraison.</p>
+</section>
+
+<section class="search-order">
+<h2>🔎 Rechercher une commande</h2>
+<div class="search-order-form">
+<input id="orderSearch" type="text" placeholder="Exemple : CMD-123456">
+<button id="searchBtn">Rechercher</button>
+</div>
+<p>Vous pouvez également consulter vos commandes enregistrées sur cet appareil.</p>
+</section>
+
+<section class="orders-section">
+<div class="section-head">
+<div>
+<h2>Mes commandes</h2>
+<p>Retrouvez vos commandes et leur statut.</p>
+</div>
+<button id="demoBtn" class="demo-btn">Voir une démonstration</button>
+</div>
+
+<div id="ordersList" class="orders-list"></div>
+
+<div id="emptyOrders" class="empty-orders" hidden>
+<div>📦</div>
+<h2>Aucune commande pour le moment</h2>
+<p>Une fois votre commande validée, vous pourrez suivre son évolution ici.</p>
+<a href="catalogue.html" class="btn btn-primary">🥬 Voir le catalogue</a>
+</div>
+</section>
+
+<section class="status-help">
+<h2>Que signifient les statuts ?</h2>
+<div class="status-grid">
+<article><div class="status-icon waiting">🟡</div><h3>En attente</h3><p>Votre commande a été reçue.</p></article>
+<article><div class="status-icon shopping">🛒</div><h3>Achat en cours</h3><p>Nous achetons vos produits au marché.</p></article>
+<article><div class="status-icon preparing">📦</div><h3>Préparation</h3><p>Votre commande est en cours de préparation.</p></article>
+<article><div class="status-icon delivery">🛵</div><h3>En livraison</h3><p>Votre commande est en route.</p></article>
+<article><div class="status-icon delivered">🟢</div><h3>Livrée</h3><p>Votre commande a été livrée avec succès.</p></article>
+</div>
+</section>
+</main>
+
+<div class="toast" id="toast"></div>
+<script src="suivi.js"></script>
+</body>
+</html>
