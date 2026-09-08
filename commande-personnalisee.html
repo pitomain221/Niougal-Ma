@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2f7d32">
+  <title>Commande personnalisée | Niougal Ma</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="commande.css">
+</head>
+<body>
+<header class="header">
+  <a href="index.html" class="logo">🥬 <span>Niougal Ma</span></a>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="catalogue.html">Catalogue</a>
+    <a class="btn btn-small" href="panier.html">🛒 Panier <span id="cartCount">0</span></a>
+  </nav>
+</header>
+
+<main class="custom-page">
+  <section class="custom-hero">
+    <span class="badge">📝 COMMANDE SUR MESURE</span>
+    <h1>Vous ne trouvez pas un produit ?</h1>
+    <p>Décrivez simplement ce que vous souhaitez acheter au marché. Nous ajouterons votre demande à votre panier.</p>
+  </section>
+
+  <div class="custom-layout">
+    <section class="custom-card">
+      <div class="form-header">
+        <div class="form-icon">🛍️</div>
+        <div>
+          <h2>Votre demande</h2>
+          <p>Donnez le plus de détails possible.</p>
+        </div>
+      </div>
+
+      <label for="request">Que souhaitez-vous acheter ?</label>
+      <textarea id="request" placeholder="Exemple : Je veux 3 bottes de persil, 500 FCFA de piment et 2 kg de tomates bien mûres..."></textarea>
+      <small class="hint">💡 Vous pouvez indiquer les quantités en kg, bottes, unités ou en montant FCFA.</small>
+
+      <div class="field-row">
+        <div>
+          <label for="budget">Budget approximatif (facultatif)</label>
+          <input id="budget" type="number" min="0" placeholder="Exemple : 5000">
+        </div>
+        <div>
+          <label for="market">Marché préféré (facultatif)</label>
+          <input id="market" type="text" placeholder="Exemple : Marché local">
+        </div>
+      </div>
+
+      <button id="addCustom" class="submit-request">🛒 Ajouter au panier</button>
+      <p class="secure-note">✓ Votre demande sera confirmée avant le paiement final.</p>
+    </section>
+
+    <aside class="help-card">
+      <h2>Comment bien commander ?</h2>
+      <div class="tip"><span>1</span><p>Indiquez le nom des produits.</p></div>
+      <div class="tip"><span>2</span><p>Précisez les quantités souhaitées.</p></div>
+      <div class="tip"><span>3</span><p>Ajoutez vos préférences si nécessaire.</p></div>
+      <div class="example">
+        <strong>Exemple :</strong>
+        <p>« Je veux 2 kg d'oignons, 3 bottes de persil et 1 000 FCFA de piment. »</p>
+      </div>
+    </aside>
+  </div>
+
+  <section class="quick-links">
+    <h2>Vous préférez choisir directement ?</h2>
+    <a href="catalogue.html" class="btn btn-primary">🥬 Voir le catalogue</a>
+    <a href="panier.html" class="btn btn-secondary">🛒 Voir mon panier</a>
+  </section>
+</main>
+
+<div class="toast" id="toast"></div>
+<script src="commande.js"></script>
+</body>
+</html>
